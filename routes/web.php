@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,8 +38,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        // Rotas das fases seguintes (stubs temporários que serão preenchidos em cada fase)
-        Route::get('/categorias', fn () => redirect()->route('admin.dashboard'))->name('categories.index');
+        // CRUD de Categorias (Fase 5)
+        Route::resource('categorias', CategoryController::class)
+            ->parameters(['categorias' => 'category'])
+            ->names('categories');
+
+        // Rotas das fases seguintes (stubs temporários)
         Route::get('/conteudos', fn () => redirect()->route('admin.dashboard'))->name('contents.index');
         Route::get('/conteudos/criar', fn () => redirect()->route('admin.dashboard'))->name('contents.create');
         Route::get('/conteudos/{id}/editar', fn () => redirect()->route('admin.dashboard'))->name('contents.edit');
