@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <rect width="600" height="400" fill="#edf4ee"/>
+  <circle cx="300" cy="180" r="48" fill="#35613B" fill-opacity="0.12"/>
+  <path d="M280 165 C280 160, 285 155, 290 155 L310 155 C315 155, 320 160, 320 165 L320 195 C320 200, 315 205, 310 205 L290 205 C285 205, 280 200, 280 195 Z" stroke="#35613B" stroke-width="3" fill="none"/>
+  <circle cx="293" cy="173" r="3" fill="#35613B"/>
+  <path d="M283 197 L296 182 L305 192 L312 185 L318 197" stroke="#35613B" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+  <text x="300" y="260" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="700" fill="#263328" text-anchor="middle">
+    Banca Santa Rita
+  </text>
+  <text x="300" y="285" font-family="'Inter', sans-serif" font-size="14" font-weight="500" fill="#35613B" text-anchor="middle">
+    Conteúdo em Exibição
+  </text>
+</svg>

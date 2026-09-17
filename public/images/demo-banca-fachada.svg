@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="fachadaBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#263328"/>
+      <stop offset="100%" stop-color="#35613B"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1BC736"/>
+      <stop offset="100%" stop-color="#16a82e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#fachadaBg)"/>
+  <!-- Silhueta da Fachada da Banca -->
+  <g transform="translate(150, 80)">
+    <!-- Toldo -->
+    <path d="M50 80 L450 80 L480 140 L20 140 Z" fill="url(#accentGrad)"/>
+    <!-- Listras do toldo -->
+    <path d="M100 80 L120 140 L160 140 L140 80 Z" fill="#ffffff" fill-opacity="0.2"/>
+    <path d="M220 80 L240 140 L280 140 L260 80 Z" fill="#ffffff" fill-opacity="0.2"/>
+    <path d="M340 80 L360 140 L400 140 L380 80 Z" fill="#ffffff" fill-opacity="0.2"/>
+    <!-- Estrutura principal da banca -->
+    <rect x="50" y="140" width="400" height="220" rx="8" fill="#1e2820" stroke="#35613B" stroke-width="4"/>
+    <!-- Vitrine e prateleiras com jornais e revistas -->
+    <rect x="80" y="165" width="340" height="150" rx="6" fill="#2d3e30" stroke="#1BC736" stroke-width="2"/>
+    <!-- Fileiras de Revistas coloridas -->
+    <rect x="95" y="180" width="40" height="55" rx="3" fill="#e74c3c"/>
+    <rect x="145" y="180" width="40" height="55" rx="3" fill="#3498db"/>
+    <rect x="195" y="180" width="40" height="55" rx="3" fill="#f1c40f"/>
+    <rect x="245" y="180" width="40" height="55" rx="3" fill="#9b59b6"/>
+    <rect x="295" y="180" width="40" height="55" rx="3" fill="#1BC736"/>
+    <rect x="345" y="180" width="40" height="55" rx="3" fill="#e67e22"/>
+    
+    <rect x="95" y="245" width="40" height="55" rx="3" fill="#2ecc71"/>
+    <rect x="145" y="245" width="40" height="55" rx="3" fill="#e91e63"/>
+    <rect x="195" y="245" width="40" height="55" rx="3" fill="#00bcd4"/>
+    <rect x="245" y="245" width="40" height="55" rx="3" fill="#ff9800"/>
+    <rect x="295" y="245" width="40" height="55" rx="3" fill="#ff5722"/>
+    <rect x="345" y="245" width="40" height="55" rx="3" fill="#607d8b"/>
+    <!-- Letreiro da Banca -->
+    <rect x="100" y="100" width="300" height="32" rx="6" fill="#263328" stroke="#1BC736" stroke-width="2"/>
+    <text x="250" y="122" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="1">
+      BANCA SANTA RITA
+    </text>
+  </g>
+  <text x="400" y="440" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">
+    Fachada Principal da Banca Santa Rita
+  </text>
+  <text x="400" y="470" font-family="'Inter', sans-serif" font-size="14" font-weight="500" fill="#1BC736" text-anchor="middle">
+    Espaço de Convivência, Informação e Tradição
+  </text>
+</svg>

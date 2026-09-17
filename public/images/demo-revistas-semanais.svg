@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#35613B"/>
+      <stop offset="100%" stop-color="#263328"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bgGrad)"/>
+  <!-- Exibição de Revistas e Periódicos -->
+  <g transform="translate(160, 60)">
+    <!-- Revista 1 inclinada -->
+    <rect x="40" y="50" width="130" height="190" rx="6" fill="#e74c3c" stroke="#ffffff" stroke-width="3" transform="rotate(-8 105 145)"/>
+    <text x="105" y="110" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="800" fill="#ffffff" text-anchor="middle" transform="rotate(-8 105 145)">CIÊNCIA</text>
+    
+    <!-- Revista 2 centro -->
+    <rect x="175" y="30" width="140" height="205" rx="6" fill="#1BC736" stroke="#ffffff" stroke-width="4"/>
+    <text x="245" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#ffffff" text-anchor="middle">ATUALIDADES</text>
+    <rect x="195" y="110" width="100" height="70" rx="4" fill="#ffffff" fill-opacity="0.2"/>
+
+    <!-- Revista 3 inclinada direita -->
+    <rect x="310" y="50" width="130" height="190" rx="6" fill="#2980b9" stroke="#ffffff" stroke-width="3" transform="rotate(8 375 145)"/>
+    <text x="375" y="110" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="800" fill="#ffffff" text-anchor="middle" transform="rotate(8 375 145)">TECNOLOGIA</text>
+  </g>
+  <text x="400" y="380" font-family="'Plus Jakarta Sans', sans-serif" font-size="24" font-weight="700" fill="#ffffff" text-anchor="middle">
+    Expositor de Revistas Semanais e Mensais
+  </text>
+  <text x="400" y="415" font-family="'Inter', sans-serif" font-size="15" font-weight="500" fill="#1BC736" text-anchor="middle">
+    Mais de 200 títulos disponíveis semanalmente
+  </text>
+</svg>
