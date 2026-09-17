@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ConfigurationController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
@@ -55,6 +56,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             ->parameters(['produtos' => 'product'])
             ->names('products');
 
-        Route::get('/configuracoes', fn () => redirect()->route('admin.dashboard'))->name('configurations.index');
+        // Configurações da Banca (Fase 8)
+        Route::get('/configuracoes', [ConfigurationController::class, 'index'])->name('configurations.index');
+        Route::put('/configuracoes', [ConfigurationController::class, 'update'])->name('configurations.update');
     });
 });
