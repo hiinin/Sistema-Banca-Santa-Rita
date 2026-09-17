@@ -97,6 +97,10 @@ class Product extends Model
                 return $this->imagem;
             }
 
+            if (str_starts_with($this->imagem, 'images/')) {
+                return asset($this->imagem);
+            }
+
             return Storage::disk('public')->url($this->imagem);
         }
 

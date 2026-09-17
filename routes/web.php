@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,10 +44,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
             ->parameters(['categorias' => 'category'])
             ->names('categories');
 
-        // Rotas das fases seguintes (stubs temporários)
-        Route::get('/conteudos', fn () => redirect()->route('admin.dashboard'))->name('contents.index');
-        Route::get('/conteudos/criar', fn () => redirect()->route('admin.dashboard'))->name('contents.create');
-        Route::get('/conteudos/{id}/editar', fn () => redirect()->route('admin.dashboard'))->name('contents.edit');
+        // CRUD de Conteúdos (Fotos e Vídeos - Fase 6)
+        Route::resource('conteudos', ContentController::class)
+            ->parameters(['conteudos' => 'content'])
+            ->names('contents');
         Route::get('/produtos', fn () => redirect()->route('admin.dashboard'))->name('products.index');
         Route::get('/produtos/criar', fn () => redirect()->route('admin.dashboard'))->name('products.create');
         Route::get('/configuracoes', fn () => redirect()->route('admin.dashboard'))->name('configurations.index');
