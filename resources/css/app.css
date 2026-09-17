@@ -1,0 +1,256 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import 'swiper/css/bundle';
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Identidade Visual - Banca Santa Rita */
+    --brand-accent: #1BC736;
+    --brand-accent-rgb: 27, 199, 54;
+    --brand-accent-hover: #16a82e;
+    --brand-accent-light: #e8f9ec;
+
+    --brand-institutional: #35613B;
+    --brand-institutional-rgb: 53, 97, 59;
+    --brand-institutional-hover: #2b5030;
+    --brand-institutional-light: #edf4ee;
+
+    --brand-dark: #263328;
+    --brand-dark-rgb: 38, 51, 40;
+    --brand-dark-surface: #1e2820;
+    --brand-dark-muted: #3d4f40;
+
+    --brand-gray-light: #f6f8f6;
+    --brand-gray-border: #e3e8e4;
+    --brand-text-muted: #647466;
+
+    /* Sobrescrevendo Bootstrap */
+    --bs-primary: var(--brand-accent);
+    --bs-primary-rgb: var(--brand-accent-rgb);
+    --bs-secondary: var(--brand-institutional);
+    --bs-secondary-rgb: var(--brand-institutional-rgb);
+    --bs-dark: var(--brand-dark);
+    --bs-dark-rgb: var(--brand-dark-rgb);
+
+    --bs-body-font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --bs-heading-font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --bs-body-color: #2b3a2d;
+    --bs-body-bg: #ffffff;
+}
+
+body {
+    font-family: var(--bs-body-font-family);
+    color: var(--bs-body-color);
+    background-color: #ffffff;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: var(--bs-heading-font-family);
+    font-weight: 700;
+    color: var(--brand-dark);
+}
+
+/* Botões Customizados */
+.btn-brand-accent {
+    background-color: var(--brand-accent);
+    color: #ffffff;
+    border: none;
+    font-weight: 600;
+    padding: 0.65rem 1.4rem;
+    border-radius: 8px;
+    transition: all 0.25s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-brand-accent:hover, .btn-brand-accent:focus {
+    background-color: var(--brand-accent-hover);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(27, 199, 54, 0.35);
+}
+
+.btn-brand-institutional {
+    background-color: var(--brand-institutional);
+    color: #ffffff;
+    border: none;
+    font-weight: 600;
+    padding: 0.65rem 1.4rem;
+    border-radius: 8px;
+    transition: all 0.25s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-brand-institutional:hover, .btn-brand-institutional:focus {
+    background-color: var(--brand-institutional-hover);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(53, 97, 59, 0.25);
+}
+
+.btn-outline-brand {
+    background-color: transparent;
+    border: 2px solid var(--brand-institutional);
+    color: var(--brand-institutional);
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.6rem 1.3rem;
+    transition: all 0.25s ease;
+}
+
+.btn-outline-brand:hover {
+    background-color: var(--brand-institutional);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Badges da Marca */
+.badge-category {
+    background-color: var(--brand-institutional-light);
+    color: var(--brand-institutional);
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid rgba(53, 97, 59, 0.15);
+}
+
+.badge-featured {
+    background-color: var(--brand-accent);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.72rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Cards com elevação e micro-animação elegante */
+.card-brand {
+    background: #ffffff;
+    border: 1px solid var(--brand-gray-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-brand:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(38, 51, 40, 0.09);
+    border-color: rgba(53, 97, 59, 0.3);
+}
+
+.card-brand .card-img-wrapper {
+    position: relative;
+    overflow: hidden;
+    background-color: #f0f2f0;
+    width: 100%;
+    padding-top: 65%; /* Aspect Ratio 16:10 */
+}
+
+.card-brand .card-img-wrapper.aspect-product {
+    padding-top: 100%; /* Quadrado para itens de exposição */
+}
+
+.card-brand .card-img-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.card-brand:hover .card-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.card-brand .card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Header & Footer */
+.site-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--brand-gray-border);
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    transition: box-shadow 0.2s ease;
+}
+
+.site-header.scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.site-footer {
+    background-color: var(--brand-dark);
+    color: #cbd7cc;
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;
+}
+
+.site-footer a {
+    color: #e2ede3;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.site-footer a:hover {
+    color: var(--brand-accent);
+}
+
+/* Painel Admin Sidebar */
+.admin-sidebar {
+    width: 260px;
+    background-color: var(--brand-dark);
+    color: #e2ede3;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+.admin-sidebar .nav-link {
+    color: #b5c7b7;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 0.65rem 1rem;
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.2s;
+}
+
+.admin-sidebar .nav-link:hover,
+.admin-sidebar .nav-link.active {
+    color: #ffffff;
+    background-color: rgba(27, 199, 54, 0.15);
+    border-left: 4px solid var(--brand-accent);
+}
+
+.admin-content {
+    flex-grow: 1;
+    background-color: #f8faf8;
+    min-height: 100vh;
+}
+
+/* Sem transbordo horizontal garantido */
+.no-overflow-x {
+    overflow-x: hidden;
+    max-width: 100%;
+}
