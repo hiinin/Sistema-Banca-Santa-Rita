@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,8 +49,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('conteudos', ContentController::class)
             ->parameters(['conteudos' => 'content'])
             ->names('contents');
-        Route::get('/produtos', fn () => redirect()->route('admin.dashboard'))->name('products.index');
-        Route::get('/produtos/criar', fn () => redirect()->route('admin.dashboard'))->name('products.create');
+
+        // CRUD de Itens em Exposição / Produtos (Fase 7)
+        Route::resource('produtos', ProductController::class)
+            ->parameters(['produtos' => 'product'])
+            ->names('products');
+
         Route::get('/configuracoes', fn () => redirect()->route('admin.dashboard'))->name('configurations.index');
     });
 });
