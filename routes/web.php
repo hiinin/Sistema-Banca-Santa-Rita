@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,8 +35,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return redirect()->route('admin.dashboard');
         });
 
-        Route::get('/dashboard', function () {
-            return response()->view('admin.dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        // Rotas das fases seguintes (stubs temporários que serão preenchidos em cada fase)
+        Route::get('/categorias', fn () => redirect()->route('admin.dashboard'))->name('categories.index');
+        Route::get('/conteudos', fn () => redirect()->route('admin.dashboard'))->name('contents.index');
+        Route::get('/conteudos/criar', fn () => redirect()->route('admin.dashboard'))->name('contents.create');
+        Route::get('/conteudos/{id}/editar', fn () => redirect()->route('admin.dashboard'))->name('contents.edit');
+        Route::get('/produtos', fn () => redirect()->route('admin.dashboard'))->name('products.index');
+        Route::get('/produtos/criar', fn () => redirect()->route('admin.dashboard'))->name('products.create');
+        Route::get('/configuracoes', fn () => redirect()->route('admin.dashboard'))->name('configurations.index');
     });
 });
