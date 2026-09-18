@@ -54,6 +54,7 @@ class ContentPublicController extends Controller
             ->firstOrFail();
 
         $relacionados = Content::published()
+            ->with('category')
             ->where('categoria_id', $content->categoria_id)
             ->where('id', '!=', $content->id)
             ->ordered()

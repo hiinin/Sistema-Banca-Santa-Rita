@@ -122,7 +122,7 @@
                                 <a href="{{ route('site.contents.show', $rel->slug) }}" class="text-decoration-none group">
                                     <div class="d-flex gap-3 align-items-center">
                                         <div class="rounded-3 overflow-hidden position-relative flex-shrink-0" style="width: 72px; height: 56px;">
-                                            <img src="{{ $rel->image_url }}" alt="{{ $rel->titulo }}" class="w-100 h-100" style="object-fit: cover;">
+                                            <img src="{{ $rel->image_url }}" alt="{{ $rel->titulo }}" class="w-100 h-100" style="object-fit: cover;" loading="lazy">
                                             @if($rel->is_video)
                                                 <div class="position-absolute top-50 start-50 translate-middle badge bg-danger p-1 rounded-circle">
                                                     <i class="bi bi-play-fill" style="font-size: 0.6rem;"></i>
