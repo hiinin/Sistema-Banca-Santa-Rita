@@ -25,6 +25,9 @@
     @stack('styles')
 </head>
 <body class="no-overflow-x d-flex flex-column min-vh-100">
+    <!-- Atalho de acessibilidade -->
+    <a href="#mainContent" class="skip-to-content">Pular para o conteúdo principal</a>
+
     @php
         $siteConfig = \App\Models\Configuration::current();
     @endphp
@@ -166,7 +169,7 @@
     </div>
 
     <!-- Conteúdo Principal -->
-    <main class="flex-grow-1">
+    <main id="mainContent" class="flex-grow-1">
         @yield('content')
     </main>
 
