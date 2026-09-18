@@ -43,23 +43,30 @@ class Configuration extends Model
      */
     public static function current(): self
     {
-        return Cache::rememberForever(self::CACHE_KEY, function () {
-            return self::firstOrCreate(
-                ['id' => 1],
-                [
-                    'nome_banca' => 'Banca Santa Rita',
-                    'descricao' => 'Seu ponto de encontro com a informação, cultura, revistas, jornais e novidades.',
-                    'endereco' => 'Praça Central, s/n - Centro',
-                    'telefone' => '(11) 98765-4321',
-                    'whatsapp' => '11987654321',
-                    'email' => 'contato@bancasantarita.com.br',
-                    'instagram' => 'bancasantarita',
-                    'facebook' => 'bancasantarita',
-                    'horario' => 'Segunda a Sábado: 06h às 20h | Domingos e Feriados: 06h às 14h',
-                    'texto_sobre' => 'A Banca Santa Rita é mais do que um ponto de venda: é um espaço de convivência, cultura e tradição na nossa comunidade. Oferecemos os principais jornais diários, revistas especializadas, lançamentos literários, gibis clássicos e colecionáveis, além de itens selecionados de papelaria e conveniência.',
-                ]
-            );
-        });
+        $cached = Cache::get(self::CACHE_KEY);
+        if ($cached instanceof self) {
+            return $cached;
+        }
+
+        $config = self::firstOrCreate(
+            ['id' => 1],
+            [
+                'nome_banca' => 'Banca Santa Rita',
+                'descricao' => 'Seu ponto de encontro com a informação, cultura, revistas, jornais e novidades.',
+                'endereco' => 'Praça Central, s/n - Centro',
+                'telefone' => '(11) 98765-4321',
+                'whatsapp' => '11987654321',
+                'email' => 'contato@bancasantarita.com.br',
+                'instagram' => 'bancasantarita',
+                'facebook' => 'bancasantarita',
+                'horario' => 'Segunda a Sábado: 06h às 20h | Domingos e Feriados: 06h às 14h',
+                'texto_sobre' => 'A Banca Santa Rita é mais do que um ponto de venda: é um espaço de convivência, cultura e tradição na nossa comunidade. Oferecemos os principais jornais diários, revistas especializadas, lançamentos literários, gibis clássicos e colecionáveis, além de itens selecionados de papelaria e conveniência.',
+            ]
+        );
+
+        Cache::forever(self::CACHE_KEY, $config);
+
+        return $config;
     }
 
     /**
