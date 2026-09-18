@@ -131,4 +131,12 @@ class Configuration extends Model
 
         return 'https://wa.me/'.$phone.'?text='.urlencode($msg);
     }
+
+    /**
+     * Get Sobre text accessor alias.
+     */
+    public function getSobreAttribute(): ?string
+    {
+        return $this->texto_sobre;
+    }
 }

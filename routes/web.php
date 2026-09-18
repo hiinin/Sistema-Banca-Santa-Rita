@@ -6,6 +6,11 @@ use App\Http\Controllers\Admin\ConfigurationController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Site\AboutController;
+use App\Http\Controllers\Site\ContactController;
+use App\Http\Controllers\Site\ContentPublicController;
+use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\Site\ProductPublicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +18,13 @@ use Illuminate\Support\Facades\Route;
 | Rotas Públicas do Site
 |--------------------------------------------------------------------------
 */
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/sobre', [AboutController::class, 'index'])->name('site.about');
+Route::get('/conteudos', [ContentPublicController::class, 'index'])->name('site.contents.index');
+Route::get('/conteudo/{slug}', [ContentPublicController::class, 'show'])->name('site.contents.show');
+Route::get('/produtos', [ProductPublicController::class, 'index'])->name('site.products.index');
+Route::get('/produto/{slug}', [ProductPublicController::class, 'show'])->name('site.products.show');
+Route::get('/contato', [ContactController::class, 'index'])->name('site.contact');
 
 Route::get('/login', function () {
     return redirect()->route('admin.login');
