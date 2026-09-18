@@ -254,3 +254,51 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     overflow-x: hidden;
     max-width: 100%;
 }
+
+/* Swiper Custom Styling (Fase 11) */
+.swiper-pagination-bullet {
+    background: #a9bea9;
+    opacity: 0.6;
+    transition: all 0.25s ease;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--brand-accent) !important;
+    opacity: 1;
+    width: 26px;
+    border-radius: 6px;
+}
+
+.swiper-prev-destaques, .swiper-next-destaques {
+    transition: all 0.2s ease;
+    border-color: var(--brand-gray-border);
+    color: var(--brand-institutional);
+    background-color: #ffffff;
+}
+
+.swiper-prev-destaques:hover, .swiper-next-destaques:hover {
+    background-color: var(--brand-institutional);
+    color: #ffffff;
+    border-color: var(--brand-institutional);
+    transform: scale(1.06);
+}
+
+/* Text Truncation Utilities */
+.line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
