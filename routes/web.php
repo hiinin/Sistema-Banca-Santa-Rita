@@ -11,6 +11,7 @@ use App\Http\Controllers\Site\ContactController;
 use App\Http\Controllers\Site\ContentPublicController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\ProductPublicController;
+use App\Http\Controllers\Site\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,7 @@ Route::get('/conteudo/{slug}', [ContentPublicController::class, 'show'])->name('
 Route::get('/produtos', [ProductPublicController::class, 'index'])->name('site.products.index');
 Route::get('/produto/{slug}', [ProductPublicController::class, 'show'])->name('site.products.show');
 Route::get('/contato', [ContactController::class, 'index'])->name('site.contact');
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 Route::get('/login', function () {
     return redirect()->route('admin.login');

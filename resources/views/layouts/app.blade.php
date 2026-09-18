@@ -13,6 +13,7 @@
     <meta property="og:image" content="@yield('og_image', asset('images/logo-banca-santa-rita.svg'))">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
+    <link rel="canonical" href="{{ url()->current() }}">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

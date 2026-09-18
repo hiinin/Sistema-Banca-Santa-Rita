@@ -200,4 +200,29 @@ class PublicSitePagesTest extends TestCase
         $response->assertSee('Horário de Funcionamento');
         $response->assertSee('Localização da Banca no Mapa');
     }
+
+    public function test_dynamic_sitemap_xml_can_be_rendered(): void
+    {
+        $category = Category::factory()->create();
+
+        $content = Content::factory()->create([
+            'categoria_id' => $category->id,
+            'status' => 'publicado',
+            'slug' => 'artigo-sitemap-teste',
+        ]);
+
+        $product = Product::factory()->create([
+            'categoria_id' => $category->id,
+            'status' => 'publicado',
+            'slug' => 'item-sitemap-teste',
+        ]);
+
+        $response = $this->get(route('sitemap'));
+
+        $response->assertStatus(200);
+        $response->assertHeader('Content-Type', 'application/xml');
+        $response->assertSee('<urlset', false);
+        $response->assertSee('artigo-sitemap-teste');
+        $response->assertSee('item-sitemap-teste');
+    }
 }
