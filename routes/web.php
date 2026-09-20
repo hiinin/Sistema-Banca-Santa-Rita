@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Site\AboutController;
+use App\Http\Controllers\Site\ChatbotController;
 use App\Http\Controllers\Site\ContactController;
 use App\Http\Controllers\Site\ContentPublicController;
 use App\Http\Controllers\Site\HomeController;
@@ -27,6 +28,9 @@ Route::get('/produtos', [ProductPublicController::class, 'index'])->name('site.p
 Route::get('/produto/{slug}', [ProductPublicController::class, 'show'])->name('site.products.show');
 Route::get('/contato', [ContactController::class, 'index'])->name('site.contact');
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+Route::post('/chatbot/message', [ChatbotController::class, 'message'])
+    ->middleware('throttle:chatbot')
+    ->name('chatbot.message');
 
 Route::get('/login', function () {
     return redirect()->route('admin.login');

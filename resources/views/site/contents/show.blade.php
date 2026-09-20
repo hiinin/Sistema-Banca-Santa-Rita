@@ -4,6 +4,58 @@
 @section('meta_description', Str::limit(strip_tags($content->descricao), 150))
 @section('og_image', $content->image_url)
 
+@section('schema_json')
+<script type="application/ld+json">
+{!! json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => $content->is_video ? 'VideoObject' : 'Article',
+    'headline' => $content->titulo,
+    'image' => $content->image_url,
+    'description' => Str::limit(strip_tags((string) $content->descricao), 200),
+    'datePublished' => $content->created_at->toAtomString(),
+    'dateModified' => $content->updated_at->toAtomString(),
+    'author' => [
+        '@type' => 'Organization',
+        'name' => $config->nome_banca,
+    ],
+    'publisher' => [
+        '@type' => 'Organization',
+        'name' => $config->nome_banca,
+        'logo' => [
+            '@type' => 'ImageObject',
+            'url' => asset('images/logo-banca-santa-rita.svg'),
+        ],
+    ],
+], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
+</script>
+<script type="application/ld+json">
+{!! json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'BreadcrumbList',
+    'itemListElement' => [
+        [
+            '@type' => 'ListItem',
+            'position' => 1,
+            'name' => 'Início',
+            'item' => route('home'),
+        ],
+        [
+            '@type' => 'ListItem',
+            'position' => 2,
+            'name' => 'Fotos & Vídeos',
+            'item' => route('site.contents.index'),
+        ],
+        [
+            '@type' => 'ListItem',
+            'position' => 3,
+            'name' => $content->titulo,
+            'item' => route('site.contents.show', $content->slug),
+        ],
+    ],
+], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
+</script>
+@endsection
+
 @section('content')
 <!-- Header & Breadcrumb -->
 <div class="py-4 bg-light border-bottom">

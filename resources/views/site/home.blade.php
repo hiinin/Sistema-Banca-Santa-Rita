@@ -4,14 +4,14 @@
 @section('meta_description', $config->descricao ?: 'Conheça o expositor digital e catálogo informativo da Banca Santa Rita. Fotos, vídeos, quadrinhos, revistas, jornais e novidades diárias.')
 
 @section('content')
-<!-- 1. Hero Section -->
-<section class="hero-section py-5 position-relative text-white overflow-hidden" style="background: linear-gradient(135deg, var(--brand-dark) 0%, #1e3322 100%);">
+<!-- 1. Hero Section Modernizado -->
+<section class="hero-section hero-gradient-mesh py-5 position-relative text-white overflow-hidden">
     <div class="container py-lg-4 position-relative z-1">
         <div class="row align-items-center g-4 g-lg-5">
             <div class="col-12 col-lg-7">
-                <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-3" style="background-color: rgba(27, 199, 54, 0.15); border: 1px solid rgba(27, 199, 54, 0.3);">
-                    <i class="bi bi-patch-check-fill text-success"></i>
-                    <span class="small fw-semibold text-white">Expositor Digital Oficial</span>
+                <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-3" style="background-color: rgba(27, 199, 54, 0.15); border: 1px solid rgba(27, 199, 54, 0.35);">
+                    <span class="status-indicator-dot"></span>
+                    <span class="small fw-semibold text-white">Aberto Hoje • Expositor Digital & Reservas</span>
                 </div>
                 <h1 class="display-4 fw-extrabold text-white mb-3" style="letter-spacing: -0.5px;">
                     {{ $config->nome_banca ?: 'Banca Santa Rita' }}
@@ -19,7 +19,26 @@
                 <p class="lead text-white-50 mb-4" style="max-width: 580px; line-height: 1.6;">
                     {{ $config->descricao ?: 'Tradição, cultura, revistas, jornais, colecionáveis e os principais lançamentos editoriais bem no coração do bairro. Conheça nossos itens em exposição!' }}
                 </p>
-                <div class="d-flex flex-wrap gap-3">
+
+                <!-- Barra de Busca Rápida Integrada no Hero -->
+                <form action="{{ route('site.products.index') }}" method="GET" class="hero-search-box d-flex align-items-center mb-3" style="max-width: 540px;">
+                    <i class="bi bi-search text-white-50 ms-2 me-2"></i>
+                    <input type="text" name="search" class="form-control text-white" placeholder="Buscar jornal, gibi, mangá, revista, autor..." aria-label="Buscar itens no expositor da banca">
+                    <button type="submit" class="btn btn-brand-accent rounded-pill px-3 py-2 btn-sm fw-semibold">
+                        <span>Buscar</span>
+                    </button>
+                </form>
+
+                <!-- Tags de Navegação Rápida -->
+                <div class="d-flex flex-wrap align-items-center gap-2 mb-4">
+                    <span class="small text-white-50">Populares:</span>
+                    <a href="{{ route('site.products.index') }}?search=jornal" class="hero-category-tag">🗞️ Jornais</a>
+                    <a href="{{ route('site.products.index') }}?search=manga" class="hero-category-tag">🦸 Mangás & HQs</a>
+                    <a href="{{ route('site.products.index') }}?search=revista" class="hero-category-tag">📰 Revistas</a>
+                    <a href="{{ route('site.products.index') }}?search=livro" class="hero-category-tag">📚 Livros</a>
+                </div>
+
+                <div class="d-flex flex-wrap gap-3 mb-4">
                     <a href="{{ route('site.products.index') }}" class="btn btn-brand-accent px-4 py-3 shadow">
                         <i class="bi bi-grid-3x3-gap-fill fs-5"></i>
                         <span>Ver Itens em Exposição</span>
@@ -28,6 +47,22 @@
                         <i class="bi bi-camera-video fs-5"></i>
                         <span>Fotos & Vídeos</span>
                     </a>
+                </div>
+
+                <!-- Barra de Estatísticas da Banca -->
+                <div class="row pt-4 border-top border-light border-opacity-10 g-3" style="max-width: 540px;">
+                    <div class="col-4">
+                        <div class="h4 fw-bold text-white mb-0" style="color: var(--brand-accent) !important;">+500</div>
+                        <div class="small text-white-50" style="font-size: 0.78rem;">Títulos no Acervo</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="h4 fw-bold text-white mb-0" style="color: var(--brand-accent) !important;">Diário</div>
+                        <div class="small text-white-50" style="font-size: 0.78rem;">Lançamentos Frescos</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="h4 fw-bold text-white mb-0" style="color: var(--brand-accent) !important;">WhatsApp</div>
+                        <div class="small text-white-50" style="font-size: 0.78rem;">Reservas Imediatas</div>
+                    </div>
                 </div>
             </div>
 

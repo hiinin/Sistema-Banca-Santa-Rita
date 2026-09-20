@@ -346,5 +346,172 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     color: #ffffff;
 }
 
+/* ==========================================================================
+   Design System Moderno: Glassmorphism, Micro-Animações & Chatbot
+   ========================================================================== */
 
+/* Sombras Suaves & Glows */
+.shadow-xs {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
 
+.shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(19, 35, 22, 0.25);
+}
+
+.shadow-glow-accent {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+}
+
+/* Efeitos de Vidro (Glassmorphism) */
+.glass-morphism {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-dark {
+    background: rgba(19, 35, 22, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Hero Moderno com Textura em Malha e Brilho */
+.hero-gradient-mesh {
+    background: radial-gradient(circle at 80% 20%, rgba(27, 199, 54, 0.18) 0%, transparent 45%),
+                radial-gradient(circle at 10% 80%, rgba(53, 97, 59, 0.35) 0%, transparent 50%),
+                linear-gradient(135deg, #132316 0%, #0d170f 100%);
+}
+
+/* Indicador Pulsante de Status Ao Vivo */
+.status-indicator-dot {
+    position: relative;
+    display: inline-flex;
+    width: 8px;
+    height: 8px;
+    background-color: #22c55e;
+    border-radius: 50%;
+}
+
+.status-indicator-dot::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #22c55e;
+    animation: pulse-ring 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.8;
+    }
+    70%, 100% {
+        transform: scale(2.8);
+        opacity: 0;
+    }
+}
+
+/* Barra de Busca Rápida no Hero */
+.hero-search-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50rem;
+    padding: 0.35rem 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.hero-search-box:focus-within {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(27, 199, 54, 0.6);
+    box-shadow: 0 0 18px rgba(27, 199, 54, 0.25);
+}
+
+.hero-search-box input {
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+}
+
+.hero-search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+/* Tags de Categorias Rápidas no Hero */
+.hero-category-tag {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #e2ede3;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.hero-category-tag:hover {
+    background: var(--brand-accent);
+    color: #ffffff;
+    border-color: var(--brand-accent);
+    transform: translateY(-2px);
+}
+
+/* Chatbot Styles */
+.chatbot-container {
+    animation: fadeInSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chatbot-launcher:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.45) !important;
+}
+
+.chatbot-messages::-webkit-scrollbar {
+    width: 5px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+.chatbot-chip {
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.chatbot-chip:hover {
+    background-color: var(--brand-institutional) !important;
+    color: #ffffff !important;
+    border-color: var(--brand-institutional) !important;
+    transform: translateY(-1px);
+}

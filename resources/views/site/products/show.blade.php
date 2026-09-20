@@ -4,6 +4,56 @@
 @section('meta_description', Str::limit(strip_tags($item->descricao), 150))
 @section('og_image', $item->image_url)
 
+@section('schema_json')
+<script type="application/ld+json">
+{!! json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'Product',
+    'name' => $item->nome,
+    'image' => $item->image_url,
+    'description' => Str::limit(strip_tags((string) $item->descricao), 200),
+    'sku' => 'ITEM-' . $item->id,
+    'category' => $item->category?->nome,
+    'offers' => [
+        '@type' => 'Offer',
+        'priceCurrency' => 'BRL',
+        'price' => (float) ($item->preco ?? 0),
+        'availability' => 'https://schema.org/InStock',
+        'seller' => [
+            '@type' => 'Newsstand',
+            'name' => $config->nome_banca,
+        ],
+    ],
+], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
+</script>
+<script type="application/ld+json">
+{!! json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'BreadcrumbList',
+    'itemListElement' => [
+        [
+            '@type' => 'ListItem',
+            'position' => 1,
+            'name' => 'Início',
+            'item' => route('home'),
+        ],
+        [
+            '@type' => 'ListItem',
+            'position' => 2,
+            'name' => 'Itens em Exposição',
+            'item' => route('site.products.index'),
+        ],
+        [
+            '@type' => 'ListItem',
+            'position' => 3,
+            'name' => $item->nome,
+            'item' => route('site.products.show', $item->slug),
+        ],
+    ],
+], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
+</script>
+@endsection
+
 @section('content')
 <!-- Breadcrumb -->
 <div class="py-4 bg-light border-bottom">

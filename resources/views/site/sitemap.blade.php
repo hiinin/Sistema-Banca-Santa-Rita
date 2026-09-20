@@ -27,6 +27,16 @@
         <priority>0.8</priority>
     </url>
 
+    <!-- Categorias do Catálogo -->
+    @foreach($categories as $category)
+        <url>
+            <loc>{{ route('site.products.index', ['categoria_id' => $category->id]) }}</loc>
+            <lastmod>{{ $category->updated_at->toAtomString() }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+        </url>
+    @endforeach
+
     <!-- Mídias e Conteúdos Publicados -->
     @foreach($contents as $content)
         <url>

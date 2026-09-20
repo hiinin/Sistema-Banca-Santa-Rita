@@ -1,24 +1,80 @@
+@php
+    $siteConfig = \App\Models\Configuration::current();
+@endphp
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Banca Santa Rita | Expositor Digital & Mídias')</title>
-    <meta name="description" content="@yield('meta_description', 'Conheça o expositor digital da Banca Santa Rita. Informações diárias, revistas, jornais, gibis, livros e novidades.')">
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <title>@yield('title', ($siteConfig->nome_banca ?: 'Banca Santa Rita') . ' | Expositor Digital & Mídias')</title>
+    <meta name="description" content="@yield('meta_description', $siteConfig->descricao ?: 'Conheça o expositor digital da Banca Santa Rita. Informações diárias, revistas, jornais, gibis, livros e novidades.')">
+    <meta name="keywords" content="@yield('meta_keywords', 'banca de jornal, revistas, quadrinhos, mangás, jornais diários, colecionáveis, livros, ' . ($siteConfig->nome_banca ?: 'Banca Santa Rita'))">
+    <meta name="author" content="{{ $siteConfig->nome_banca }}">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#10b981">
+    <link rel="icon" type="image/x-icon" href="{{ $siteConfig->favicon_url }}">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="@yield('canonical', url()->current())">
 
     <!-- Open Graph SEO -->
-    <meta property="og:title" content="@yield('title', 'Banca Santa Rita | Expositor Digital & Mídias')">
-    <meta property="og:description" content="@yield('meta_description', 'Conheça o expositor digital da Banca Santa Rita.')">
+    <meta property="og:site_name" content="{{ $siteConfig->nome_banca }}">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="@yield('title', ($siteConfig->nome_banca ?: 'Banca Santa Rita') . ' | Expositor Digital & Mídias')">
+    <meta property="og:description" content="@yield('meta_description', $siteConfig->descricao ?: 'Conheça o expositor digital da Banca Santa Rita.')">
     <meta property="og:image" content="@yield('og_image', asset('images/logo-banca-santa-rita.svg'))">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="@yield('og_type', 'website')">
     <meta property="og:url" content="{{ url()->current() }}">
-    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Twitter Card SEO -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('title', ($siteConfig->nome_banca ?: 'Banca Santa Rita') . ' | Expositor Digital & Mídias')">
+    <meta name="twitter:description" content="@yield('meta_description', $siteConfig->descricao ?: 'Conheça o expositor digital da Banca Santa Rita.')">
+    <meta name="twitter:image" content="@yield('og_image', asset('images/logo-banca-santa-rita.svg'))">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Schema.org JSON-LD Global (Newsstand / LocalBusiness) -->
+    <script type="application/ld+json">
+    {!! json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'Newsstand',
+        'name' => $siteConfig->nome_banca,
+        'description' => $siteConfig->descricao,
+        'url' => url('/'),
+        'logo' => asset('images/logo-banca-santa-rita.svg'),
+        'image' => asset('images/logo-banca-santa-rita.svg'),
+        'telephone' => $siteConfig->telefone,
+        'email' => $siteConfig->email,
+        'address' => [
+            '@type' => 'PostalAddress',
+            'streetAddress' => $siteConfig->endereco,
+            'addressCountry' => 'BR',
+        ],
+        'openingHours' => $siteConfig->horario,
+        'priceRange' => '$',
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+
+    <!-- Schema.org JSON-LD WebSite com SearchAction -->
+    <script type="application/ld+json">
+    {!! json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'WebSite',
+        'name' => $siteConfig->nome_banca,
+        'url' => url('/'),
+        'potentialAction' => [
+            '@type' => 'SearchAction',
+            'target' => route('site.products.index') . '?search={search_term_string}',
+            'query-input' => 'required name=search_term_string',
+        ],
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+
+    @yield('schema_json')
 
     <!-- CSS e JS via Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -28,10 +84,6 @@
 <body class="no-overflow-x d-flex flex-column min-vh-100">
     <!-- Atalho de acessibilidade -->
     <a href="#mainContent" class="skip-to-content">Pular para o conteúdo principal</a>
-
-    @php
-        $siteConfig = \App\Models\Configuration::current();
-    @endphp
 
     <!-- Topbar Institucional -->
     <div class="bg-dark text-white py-1 px-3 d-none d-md-block" style="background-color: var(--brand-dark) !important; font-size: 0.8rem;">
@@ -367,6 +419,9 @@
             }
         });
     </script>
+
+    <!-- Componente Interativo do Chatbot -->
+    @include('components.chatbot')
 
     @stack('scripts')
 </body>
