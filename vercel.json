@@ -31,7 +31,7 @@
   ],
   "env": {
     "APP_ENV": "production",
-    "APP_DEBUG": "false",
+    "APP_DEBUG": "true",
     "APP_PACKAGES_CACHE": "/tmp/storage/bootstrap/packages.php",
     "APP_SERVICES_CACHE": "/tmp/storage/bootstrap/services.php",
     "APP_CONFIG_CACHE": "/tmp/storage/bootstrap/config.php",
