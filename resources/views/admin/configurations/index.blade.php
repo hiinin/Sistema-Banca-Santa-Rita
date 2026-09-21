@@ -122,7 +122,7 @@
                                        id="whatsapp" 
                                        name="whatsapp" 
                                        value="{{ old('whatsapp', $config->whatsapp) }}" 
-                                       placeholder="15998765432">
+                                       placeholder="4498424758">
                             </div>
                             <div class="form-text small text-muted">
                                 Link gerado para o visitante: 
@@ -144,7 +144,7 @@
                                        id="telefone" 
                                        name="telefone" 
                                        value="{{ old('telefone', $config->telefone) }}" 
-                                       placeholder="(15) 3232-1000">
+                                       placeholder="(44) 9842-4758">
                             </div>
                             @error('telefone')
                                 <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -178,7 +178,7 @@
                                        id="endereco" 
                                        name="endereco" 
                                        value="{{ old('endereco', $config->endereco) }}" 
-                                       placeholder="Praça Coronel Fernando Prestes, s/n - Centro">
+                                       placeholder="Praça 7 de Setembro (Praça do Peladão), s/n - Ao lado do Hospital Bom Samaritano, Maringá - PR">
                             </div>
                             @error('endereco')
                                 <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -243,7 +243,7 @@
                                id="horario" 
                                name="horario" 
                                value="{{ old('horario', $config->horario) }}" 
-                               placeholder="Segunda a Sábado: 06h às 20h | Domingos e Feriados: 06h às 14h">
+                               placeholder="Segunda a Sexta: 08:00 às 18:00 | Sábados: 09:00 às 17:00">
                         @error('horario')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -257,7 +257,7 @@
                                    id="latitude" 
                                    name="latitude" 
                                    value="{{ old('latitude', $config->latitude) }}" 
-                                   placeholder="-23.5015">
+                                   placeholder="-23.422934">
                             @error('latitude')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -270,7 +270,7 @@
                                    id="longitude" 
                                    name="longitude" 
                                    value="{{ old('longitude', $config->longitude) }}" 
-                                   placeholder="-47.4581">
+                                   placeholder="-51.952967">
                             @error('longitude')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

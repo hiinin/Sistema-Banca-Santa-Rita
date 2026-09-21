@@ -35,7 +35,7 @@
                             </div>
                             <div class="flex-grow-1">
                                 <span class="small fw-semibold text-muted d-block">WhatsApp da Banca</span>
-                                <strong class="fs-6 text-dark">{{ $config->whatsapp ?: '(11) 98765-4321' }}</strong>
+                                <strong class="fs-6 text-dark">{{ $config->whatsapp ? '(' . substr($config->clean_whatsapp, -10, 2) . ') ' . substr($config->clean_whatsapp, -8) : '(44) 9842-4758' }}</strong>
                             </div>
                             <a href="{{ $config->getWhatsappUrl('Olá! Vim através do site e gostaria de tirar uma dúvida com a Banca Santa Rita.') }}" target="_blank" class="btn btn-sm btn-brand-accent">
                                 Mensagem
@@ -44,19 +44,17 @@
                     </div>
 
                     <!-- Telefone -->
-                    @if($config->telefone)
-                        <div class="card border-0 shadow-sm rounded-4 p-3">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 48px; height: 48px; background-color: var(--brand-institutional-light); color: var(--brand-institutional);">
-                                    <i class="bi bi-telephone fs-4"></i>
-                                </div>
-                                <div>
-                                    <span class="small fw-semibold text-muted d-block">Telefone</span>
-                                    <strong class="fs-6 text-dark">{{ $config->telefone }}</strong>
-                                </div>
+                    <div class="card border-0 shadow-sm rounded-4 p-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 48px; height: 48px; background-color: var(--brand-institutional-light); color: var(--brand-institutional);">
+                                <i class="bi bi-telephone fs-4"></i>
+                            </div>
+                            <div>
+                                <span class="small fw-semibold text-muted d-block">Telefone Comercial</span>
+                                <strong class="fs-6 text-dark">{{ $config->telefone ?: '(44) 9842-4758' }}</strong>
                             </div>
                         </div>
-                    @endif
+                    </div>
 
                     <!-- Endereço -->
                     <div class="card border-0 shadow-sm rounded-4 p-3">
@@ -66,7 +64,12 @@
                             </div>
                             <div>
                                 <span class="small fw-semibold text-muted d-block">Endereço da Banca</span>
-                                <strong class="fs-6 text-dark">{{ $config->endereco ?: 'Praça Central, s/n - Centro' }}</strong>
+                                <strong class="fs-6 text-dark">{{ $config->endereco ?: 'Praça 7 de Setembro (Praça do Peladão), s/n - Ao lado do Hospital Bom Samaritano, Zona 05, Maringá - PR' }}</strong>
+                                <div class="mt-1">
+                                    <span class="badge bg-success bg-opacity-10 text-success fw-normal">
+                                        <i class="bi bi-geo-fill me-1"></i> Praça do Peladão • Ao lado do Hospital Bom Samaritano
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -79,7 +82,11 @@
                             </div>
                             <div>
                                 <span class="small fw-semibold text-muted d-block">Horário de Funcionamento</span>
-                                <strong class="fs-6 text-dark">{{ $config->horario ?: 'Segunda a Sábado: 06h às 20h | Domingos: 06h às 14h' }}</strong>
+                                <strong class="fs-6 text-dark d-block mb-1">{{ $config->horario ?: 'Segunda a Sexta: 08:00 às 18:00 | Sábados: 09:00 às 17:00' }}</strong>
+                                <div class="small text-muted">
+                                    <span class="d-block">• Segunda a Sexta: <strong>08:00 às 18:00</strong></span>
+                                    <span class="d-block">• Sábados: <strong>09:00 às 17:00</strong></span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -129,8 +136,8 @@
 
                 <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-3">
                     @php
-                        $lat = $config->latitude ?: '-23.550520';
-                        $lng = $config->longitude ?: '-46.633308';
+                        $lat = $config->latitude ?: '-23.422934';
+                        $lng = $config->longitude ?: '-51.952967';
                     @endphp
                     <div class="ratio ratio-16x9" style="min-height: 380px;">
                         <iframe 

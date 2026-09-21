@@ -50,10 +50,10 @@ class ChatbotController extends Controller
 
         // 2. Horário de Funcionamento
         if ($this->matchesIntent($normalized, ['horario', 'horas', 'abre', 'fecha', 'funcionamento', 'aberto', 'domingo', 'sabado', 'feriado', 'expediente'])) {
-            $horario = $config->horario ?: 'Segunda a Sábado: 06h às 20h | Domingos e Feriados: 06h às 14h';
+            $horario = $config->horario ?: 'Segunda a Sexta: das 08:00 às 18:00 | Sábados: das 09:00 às 17:00';
 
             return response()->json([
-                'reply' => "⏰ **Nosso Horário de Funcionamento:**\n\n{$horario}\n\nVocê também pode nos chamar no WhatsApp para checar se algum exemplar específico ainda está disponível hoje!",
+                'reply' => "⏰ **Nosso Horário de Funcionamento:**\n\n{$horario}\n\n• **Segunda a Sexta:** das 08:00 às 18:00\n• **Sábados:** das 09:00 às 17:00\n\nVocê também pode nos chamar no WhatsApp ou telefone para checar se algum exemplar específico ainda está disponível hoje!",
                 'items' => [],
                 'whatsapp_url' => $config->getWhatsappUrl('Olá! Gostaria de confirmar se a banca está aberta hoje.'),
                 'suggestions' => [
@@ -66,10 +66,10 @@ class ChatbotController extends Controller
 
         // 3. Endereço e Localização
         if ($this->matchesIntent($normalized, ['onde fica', 'endereco', 'localizacao', 'localizao', 'como chegar', 'mapa', 'bairro', 'rua', 'onde vcs estao', 'onde voces ficam'])) {
-            $endereco = $config->endereco ?: 'Praça Central, s/n - Centro';
+            $endereco = $config->endereco ?: 'Praça 7 de Setembro (Praça do Peladão), s/n - Ao lado do Hospital Bom Samaritano, Zona 05, Maringá - PR';
 
             return response()->json([
-                'reply' => "📍 **Onde estamos localizados:**\n\n{$endereco}\n\nEstamos bem no coração da cidade, com acesso super fácil para você retirar seus jornais, cafés e colecionáveis favoritos!",
+                'reply' => "📍 **Onde estamos localizados:**\n\n{$endereco}\n\nEstamos situados na tradicional **Praça do Peladão** em Maringá - PR, bem ao lado do **Hospital Bom Samaritano**, com fácil acesso para você retirar seus jornais, revistas, quadrinhos e colecionáveis favoritos!",
                 'items' => [],
                 'whatsapp_url' => $config->getWhatsappUrl('Olá! Gostaria de saber como chegar até a Banca Santa Rita.'),
                 'suggestions' => [
@@ -80,12 +80,12 @@ class ChatbotController extends Controller
             ]);
         }
 
-        // 4. Contato Humano / WhatsApp
+        // 4. Contato Humano / Telefone / WhatsApp
         if ($this->matchesIntent($normalized, ['humano', 'atendente', 'whatsapp', 'zap', 'telefone', 'contato', 'falar com alguem', 'pessoa real', 'atendimento'])) {
-            $zap = $config->whatsapp ?: '11987654321';
+            $tel = $config->telefone ?: '(44) 9842-4758';
 
             return response()->json([
-                'reply' => "🤝 **Fale Diretamente com Nosso Atendente Humano!**\n\nNosso time está pronto para te atender pelo WhatsApp e tirar qualquer dúvida ou reservar publicações para você.",
+                'reply' => "🤝 **Fale Diretamente com Nossa Equipe!**\n\nNosso time está à sua disposição:\n• 📞 **Telefone:** {$tel}\n• 💬 **WhatsApp:** {$tel}\n\nVocê pode nos ligar diretamente ou clicar no botão abaixo para iniciar uma conversa no WhatsApp!",
                 'items' => [],
                 'whatsapp_url' => $config->getWhatsappUrl('Olá! Gostaria de falar com o atendente da Banca Santa Rita.'),
                 'suggestions' => [

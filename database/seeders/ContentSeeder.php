@@ -34,9 +34,9 @@ class ContentSeeder extends Seeder
                 'data_publicacao' => now()->subDays(2),
             ],
             [
-                'titulo' => 'Jornais do Dia Chegando às 06h da Manhã',
-                'slug' => 'jornais-do-dia-chegando-as-06h',
-                'descricao' => 'Recebemos as principais manchetes do Brasil e do mundo nas primeiras horas do dia. Venha tomar seu café da manhã bem informado conosco.',
+                'titulo' => 'Jornais do Dia Logo Cedo na Banca',
+                'slug' => 'jornais-do-dia-logo-cedo-na-banca',
+                'descricao' => 'Recebemos as principais manchetes do Brasil e do mundo todas as manhãs. Passe na banca a partir das 08h e comece seu dia bem informado.',
                 'tipo' => 'foto',
                 'categoria_id' => $catJornais->id,
                 'imagem' => 'images/demo-jornais-manhas.svg',
