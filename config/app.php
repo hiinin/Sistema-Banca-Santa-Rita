@@ -119,7 +119,7 @@ return [
     */
 
     'maintenance' => [
-        'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
+        'driver' => (! empty(env('APP_MAINTENANCE_DRIVER')) ? env('APP_MAINTENANCE_DRIVER') : 'array'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 

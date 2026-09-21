@@ -48,8 +48,9 @@ try {
     $_ENV['APP_PACKAGES_CACHE'] = "{$bootstrapCache}/packages.php";
     $_ENV['APP_SERVICES_CACHE'] = "{$bootstrapCache}/services.php";
     $_ENV['APP_CONFIG_CACHE'] = "{$bootstrapCache}/config.php";
-    $_ENV['APP_ROUTES_CACHE'] = "{$bootstrapCache}/routes.php";
-    $_ENV['APP_EVENTS_CACHE'] = "{$bootstrapCache}/events.php";
+    putenv('APP_MAINTENANCE_DRIVER=array');
+    $_ENV['APP_MAINTENANCE_DRIVER'] = 'array';
+    $_SERVER['APP_MAINTENANCE_DRIVER'] = 'array';
 
     if (file_exists(__DIR__.'/../bootstrap/providers.php')) {
         @copy(__DIR__.'/../bootstrap/providers.php', "{$bootstrapCache}/providers.php");
