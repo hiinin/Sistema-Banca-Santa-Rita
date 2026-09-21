@@ -1,31 +1,24 @@
-@extends('layouts.app')
-
-@section('title', 'Instabilidade Temporária | Banca Santa Rita')
-@section('meta_description', 'Pedimos desculpas pelo inconveniente temporário.')
-
-@section('content')
-<div class="container py-5 my-5 text-center">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-6">
-            <div class="p-4 p-md-5 rounded-4 shadow-sm bg-white border">
-                <span class="badge bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25 mb-3 px-3 py-2 fs-6">Aviso do Sistema</span>
-                <h1 class="h2 fw-bold text-dark mb-3">Instabilidade Momentânea</h1>
-                <p class="text-muted mb-4">
-                    Nossa equipe já foi notificada. Por favor, tente recarregar a página em alguns instantes ou entre em contato diretamente pelo WhatsApp.
-                </p>
-                @php
-                    $siteConfig = \App\Models\Configuration::current();
-                @endphp
-                <div class="d-flex flex-wrap justify-content-center gap-3">
-                    <a href="{{ route('home') }}" class="btn btn-brand-institutional">
-                        <i class="bi bi-arrow-clockwise me-1"></i> Voltar ao Início
-                    </a>
-                    <a href="{{ $siteConfig->getWhatsappUrl('Olá, notei uma instabilidade no site e gostaria de atendimento.') }}" target="_blank" class="btn btn-brand-accent">
-                        <i class="bi bi-whatsapp me-1"></i> Falar no WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instabilidade Momentânea | Banca Santa Rita</title>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; background: #f8fafc; color: #1e293b; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 1.5rem; text-align: center; }
+        .card { background: white; border-radius: 1.5rem; padding: 3rem 2rem; max-width: 480px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0; }
+        .badge { display: inline-block; background: #fee2e2; color: #dc2626; font-size: 0.8rem; font-weight: 700; padding: 0.35rem 0.75rem; border-radius: 9999px; margin-bottom: 1rem; }
+        h1 { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin-bottom: 0.75rem; }
+        p { color: #64748b; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.75rem; }
+        .btn { display: inline-block; background: #10b981; color: white; padding: 0.75rem 1.5rem; border-radius: 0.75rem; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <span class="badge">Aviso do Sistema</span>
+        <h1>Instabilidade Momentânea</h1>
+        <p>A Banca Santa Rita está passando por uma inicialização de serviços. Por favor, tente recarregar a página.</p>
+        <a href="/" class="btn">Recarregar Página</a>
     </div>
-</div>
-@endsection
+</body>
+</html>
